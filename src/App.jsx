@@ -30,12 +30,8 @@ const App = () => {
       const minutes = now.getMinutes();
       const time = hour + minutes / 60;
       
-      // Luni - Vineri: 09:00 - 20:00
-      if (day >= 1 && day <= 5 && time >= 9 && time < 20) {
-        setIsOpen(true);
-      } 
-      // Sâmbătă: 09:00 - 14:00
-      else if (day === 6 && time >= 9 && time < 14) {
+      // Luni - Vineri: 09:00 - 17:00 (Ajustat conform Google Maps)
+      if (day >= 1 && day <= 6 && time >= 9 && time < 17) {
         setIsOpen(true);
       } 
       // Duminică sau în afara programului
@@ -118,9 +114,9 @@ const App = () => {
             </div>
           </div>
 
-          {/* Desktop Menu */}
+          {/* Desktop Menu - Adăugat 'Recenzii' */}
           <div className={`hidden md:flex items-center space-x-8 transition-all duration-300 ${isScrolled ? 'mt-1' : 'mt-2'}`}>
-            {['Servicii', 'Despre noi', 'Echipa', 'Tarife', 'Contact'].map((item) => (
+            {['Servicii', 'Despre noi', 'Echipa', 'Recenzii', 'Tarife', 'Contact'].map((item) => (
               <button 
                 key={item} 
                 onClick={() => scrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
@@ -141,7 +137,7 @@ const App = () => {
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white shadow-xl py-6 px-6 flex flex-col space-y-4 md:hidden">
-            {['Servicii', 'Despre noi', 'Echipa', 'Tarife', 'Contact'].map((item) => (
+            {['Servicii', 'Despre noi', 'Echipa', 'Recenzii', 'Tarife', 'Contact'].map((item) => (
               <button 
                 key={item} 
                 onClick={() => scrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
@@ -212,7 +208,7 @@ const App = () => {
                   <div className="flex text-emerald-500 text-sm">
                     <Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" />
                   </div>
-                  <p className="text-xs font-medium text-zinc-900 mt-1">5.0 din 200+ recenzii</p>
+                  <p className="text-xs font-medium text-zinc-900 mt-1">5.0 din recenziile Google</p>
                 </div>
              </div>
           </div>
@@ -257,7 +253,7 @@ const App = () => {
               { icon: Zap, title: 'Terapie Laser', desc: 'Tratamente precise, nedureroase și cu recuperare rapidă folosind laser dentar avansat.' },
               { icon: Activity, title: 'Chirurgie Orală', desc: 'Extracții de molari de minte, rezecții apicale și proceduri chirurgicale realizate în siguranță.' },
               { icon: Smile, title: 'Ortodonție', desc: 'Aparate dentare invizibile (Invisalign) și clasice pentru alinierea perfectă a dinților.' },
-              { icon: Baby, title: 'Stomatologie Copii', desc: 'Tratamente fără durere într-un mediu prietenos, dedicat zâmbetelor celor mici.' }
+              { icon: Baby, title: 'Pedodonție', desc: 'Tratamente fără durere într-un mediu prietenos, dedicat zâmbetelor celor mici.' }
             ].map((service, idx) => (
               <div key={idx} className="snap-start w-[85vw] sm:w-[260px] lg:w-[280px] shrink-0 bg-white p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow group cursor-pointer border border-zinc-100 flex flex-col h-full">
                 <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
@@ -319,7 +315,7 @@ const App = () => {
       </section>
 
       {/* Team Section */}
-      <section id="echipa" className="py-24">
+      <section id="echipa" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase mb-3">Echipa Noastră</h2>
@@ -338,6 +334,63 @@ const App = () => {
                 </div>
                 <h4 className="text-xl font-medium text-zinc-900">{doc.name}</h4>
                 <p className="text-emerald-600 font-medium text-sm mt-1">{doc.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Google Reviews Section (New) */}
+      <section id="recenzii" className="py-24 bg-zinc-900 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-sm font-bold tracking-widest text-emerald-500 uppercase mb-3">Părerea Pacienților</h2>
+              <h3 className="text-3xl md:text-4xl font-light mb-6">Ce spun pacienții noștri</h3>
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex text-emerald-500">
+                  <Star fill="currentColor" size={24} />
+                  <Star fill="currentColor" size={24} />
+                  <Star fill="currentColor" size={24} />
+                  <Star fill="currentColor" size={24} />
+                  <Star fill="currentColor" size={24} />
+                </div>
+                <span className="text-2xl font-medium">5 stele din 5</span>
+                <span className="text-zinc-400">din 153 recenzii pe Google</span>
+              </div>
+            </div>
+            
+            <a 
+              href="https://maps.app.goo.gl/QVTipzzMLNWCAq5y6" 
+              target="_blank" 
+              rel="noreferrer"
+              className="group flex items-center space-x-2 bg-white text-zinc-900 px-6 py-3 rounded-full font-medium hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-lg"
+            >
+              <span>Vezi toate recenziile</span>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: "Alexandra", text: "Recomand cu toată încrederea serviciile Dentis: profesionalism, servicii de foarte bună calitate, echipamente de ultima generație, personal foarte amabil." },
+              { name: "Eddy", text: "Un cabinet stomatologic cu o atmosferă plăcută și cu resurse potrivite pentru toate problemele dentare. Veți pleca întotdeauna de acolo cu un zâmbet mai larg și încrezător 😁" },
+              { name: "Mariana", text: "Un medic excepțional, cu foarte multă răbdare, cu multe explicații privind procedurile aplicate și datorită căruia am scăpat de 'frică' de dentist. Recomand cu încredere!" }
+            ].map((review, idx) => (
+              <div key={idx} className="bg-zinc-800/40 p-8 rounded-3xl border border-zinc-700/50 hover:bg-zinc-800/80 transition-all duration-300 flex flex-col h-full shadow-xl">
+                <div className="flex text-emerald-500 mb-6">
+                  {[1,2,3,4,5].map(star => <Star key={star} size={16} fill="currentColor" className="mr-1" />)}
+                </div>
+                <p className="text-zinc-300 leading-relaxed mb-8 flex-grow">"{review.text}"</p>
+                <div className="flex items-center justify-between mt-auto pt-6 border-t border-zinc-700/50">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-emerald-900/50 rounded-full flex items-center justify-center text-emerald-400 font-medium border border-emerald-800/50">
+                      {review.name.charAt(0)}
+                    </div>
+                    <span className="font-medium text-white">{review.name}</span>
+                  </div>
+                  <span className="text-xs text-zinc-500 font-medium">{review.date}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -391,7 +444,7 @@ const App = () => {
             
             <div className="space-y-8 mb-10">
               <a 
-                href="https://maps.google.com/?q=Strada+Progresului+B12,+Targu+Neamt" 
+                href="https://maps.app.goo.gl/QVTipzzMLNWCAq5y6" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="flex items-start group"
@@ -421,7 +474,7 @@ const App = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-zinc-900">Program</h4>
-                  <p className="text-zinc-500 mt-1">Luni - Vineri: 09:00 - 20:00<br/>Sâmbătă: 09:00 - 14:00</p>
+                  <p className="text-zinc-500 mt-1">Luni - Vineri: 09:00 - 17:00<br/>Sâmbătă: 09:00 - 17:00<br/>Duminică: Închis</p>
                 </div>
               </div>
             </div>
@@ -499,6 +552,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-2">
              <div className="mb-6 cursor-pointer inline-block" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+              {/* Am lăsat link-ul de logo curent, va fi înlocuit cu cel alb conform discuției anterioare */}
               <img 
                 src="https://i.postimg.cc/vBNcHCL3/logo2.png" 
                 alt="Dentis Center Logo" 
