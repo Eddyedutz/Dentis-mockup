@@ -21,31 +21,28 @@ const App = () => {
 
   const carouselRef = useRef(null);
 
-  // Verifică programul de funcționare
+  // Verifică programul de funcționare (L-V 09:17, S 09:17)
   useEffect(() => {
     const checkStatus = () => {
       const now = new Date();
-      const day = now.getDay(); // 0 = Duminică, 1 = Luni, etc.
+      const day = now.getDay(); 
       const hour = now.getHours();
       const minutes = now.getMinutes();
       const time = hour + minutes / 60;
       
-      // Luni - Vineri: 09:00 - 17:00 (Ajustat conform Google Maps)
       if (day >= 1 && day <= 6 && time >= 9 && time < 17) {
         setIsOpen(true);
-      } 
-      // Duminică sau în afara programului
-      else {
+      } else {
         setIsOpen(false);
       }
     };
 
     checkStatus();
-    const timer = setInterval(checkStatus, 60000); // Verifică în fiecare minut
+    const timer = setInterval(checkStatus, 60000);
     return () => clearInterval(timer);
   }, []);
 
-  // Handle scroll for sticky header
+  // Monitorizează scroll-ul pentru a micșora header-ul
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -66,16 +63,7 @@ const App = () => {
     if (carouselRef.current) {
       const container = carouselRef.current;
       const scrollAmount = direction === 'left' ? -300 : 300;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      // Verificăm poziția pentru a crea efectul de "rotativ" (looping)
-      if (direction === 'right' && container.scrollLeft >= maxScroll - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' }); // Se întoarce la primul
-      } else if (direction === 'left' && container.scrollLeft <= 10) {
-        container.scrollTo({ left: maxScroll, behavior: 'smooth' }); // Sare la ultimul
-      } else {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
@@ -84,50 +72,52 @@ const App = () => {
     const { nume, telefon, serviciu, mesaj } = formData;
     const text = `Bună ziua, mă numesc ${nume}. Doresc informații pentru: ${serviciu}. \nTelefon: ${telefon}. \nMesaj: ${mesaj}`;
     const encodedText = encodeURIComponent(text);
-    // Folosim window.open cu '_top' pentru a ocoli restricțiile de iframe pe mobil/desktop
     window.open(`https://wa.me/40752103861?text=${encodedText}`, '_top');
   };
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-emerald-200">
       
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'}`}>
+	{/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-zinc-950/80 border-b border-zinc-800/50 ${isScrolled ? 'py-3' : 'py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center relative">
           
           <div className="w-full flex justify-center items-center">
-            {/* Logo Wrapper pt a tine butonul de mobil aproape de el */}
+            {/* Logo Wrapper */}
             <div className="relative flex items-center">
-              {/* Logo */}
+              {/* Logo PNG - MEREU ALB */}
               <div className="cursor-pointer flex items-center" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                 <img 
-                  src="https://i.postimg.cc/vBNcHCL3/logo2.png" 
+                  src={`${import.meta.env.BASE_URL}logo_white.svg`} 
                   alt="Dentis Center Logo" 
-                  className={`w-auto object-contain transition-all duration-300 ${isScrolled ? 'h-16 md:h-24' : 'h-24 md:h-40'}`}
+                  className={`transform-gpu w-auto object-contain transition-all duration-300 ${isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-28'}`}
                 />
               </div>
 
-              {/* Mobile Menu Toggle - atasat langa logo */}
-              <button className="md:hidden text-zinc-900 absolute -right-14 p-2 bg-white/50 rounded-full backdrop-blur-sm" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {/* Mobile Menu Toggle */}
+              <button 
+                className="md:hidden absolute -right-14 p-2 rounded-xl transition-colors text-zinc-300 hover:bg-zinc-800/50"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
                 {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
 
-          {/* Desktop Menu - Adăugat 'Recenzii' */}
+          {/* Desktop Menu */}
           <div className={`hidden md:flex items-center space-x-8 transition-all duration-300 ${isScrolled ? 'mt-1' : 'mt-2'}`}>
             {['Servicii', 'Despre noi', 'Echipa', 'Recenzii', 'Tarife', 'Contact'].map((item) => (
               <button 
                 key={item} 
                 onClick={() => scrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
-                className="text-sm font-medium text-zinc-600 hover:text-emerald-600 transition-colors"
+                className="text-sm font-medium transition-colors text-zinc-300 hover:text-emerald-400"
               >
                 {item}
               </button>
             ))}
             <button 
               onClick={() => setBookingModalOpen(true)}
-              className="bg-zinc-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-colors shadow-lg hover:shadow-xl ml-4"
+              className="px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-xl ml-4 bg-emerald-600 text-white hover:bg-emerald-500"
             >
               Programare Online
             </button>
@@ -136,19 +126,19 @@ const App = () => {
 
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-xl py-6 px-6 flex flex-col space-y-4 md:hidden">
+          <div className="absolute top-full left-0 w-full shadow-xl py-6 px-6 flex flex-col space-y-4 md:hidden backdrop-blur-md bg-zinc-950/95 border-b border-zinc-800">
             {['Servicii', 'Despre noi', 'Echipa', 'Recenzii', 'Tarife', 'Contact'].map((item) => (
               <button 
                 key={item} 
                 onClick={() => scrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
-                className="text-left text-lg font-medium text-zinc-800 py-2 border-b border-zinc-100"
+                className="text-left text-lg font-medium py-2 border-b text-zinc-300 border-zinc-800"
               >
                 {item}
               </button>
             ))}
             <button 
               onClick={() => { setMobileMenuOpen(false); setBookingModalOpen(true); }}
-              className="bg-emerald-600 text-white w-full py-3 rounded-xl font-medium mt-4"
+              className="bg-emerald-600 text-white w-full py-3 rounded-xl font-medium mt-4 hover:bg-emerald-500 transition-colors"
             >
               Programare Online
             </button>
@@ -547,16 +537,16 @@ const App = () => {
         </div>
       </section>
 
-      {/* Footer */}
+	{/* Footer */}
       <footer className="bg-zinc-950 text-zinc-400 py-12 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-2">
              <div className="mb-6 cursor-pointer inline-block" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-              {/* Am lăsat link-ul de logo curent, va fi înlocuit cu cel alb conform discuției anterioare */}
+              {/* Aici forțăm mereu logo-ul alb, deoarece fundalul footer-ului e negru */}
               <img 
-                src="https://i.postimg.cc/vBNcHCL3/logo2.png" 
+                src={`${import.meta.env.BASE_URL}logo_white.svg`} 
                 alt="Dentis Center Logo" 
-                className="h-10 md:h-12 w-auto object-contain bg-white/25 p-2 rounded-xl"
+                className="transform-gpu h-10 md:h-14 w-auto object-contain hover:opacity-80 transition-opacity"
               />
             </div>
             <p className="max-w-sm mb-6">Clinică stomatologică premium dedicată sănătății și esteticii zâmbetului tău, folosind tehnologii de ultimă generație.</p>
