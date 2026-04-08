@@ -35,7 +35,8 @@ const Navbar = ({ setBookingModalOpen }) => {
             </Link>
 
             <button 
-              className="md:hidden absolute -right-14 p-2 rounded-xl transition-colors text-zinc-300 hover:bg-zinc-800/50"
+              aria-label="Deschide meniul cu toate paginile din website"
+			  className="md:hidden absolute -right-14 p-2 rounded-xl transition-colors text-zinc-300 hover:bg-zinc-800/50"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}

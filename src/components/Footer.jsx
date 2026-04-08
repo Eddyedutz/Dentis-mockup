@@ -13,6 +13,7 @@ const Footer = () => {
               src={`${import.meta.env.BASE_URL}logo_white.svg`} 
               alt="Dentis Center Logo" 
               className="transform-gpu h-10 md:h-14 w-auto object-contain hover:opacity-80 transition-opacity"
+			  loading="lazy"
             />
           </Link>
           <p className="max-w-sm leading-relaxed">
@@ -59,6 +60,7 @@ const Footer = () => {
               src="https://magazin.agrii.ro/static/version1775557960/frontend/Zitec/agrii/default/images/footer-anpc-sal.png" 
               alt="ANPC SAL" 
               className="h-10 w-auto object-contain" 
+			  loading="lazy"
             />
           </a>
           <a 
@@ -71,6 +73,7 @@ const Footer = () => {
               src="https://magazin.agrii.ro/static/version1775557960/frontend/Zitec/agrii/default/images/footer-anpc-sol.png" 
               alt="ANPC SOL" 
               className="h-10 w-auto object-contain" 
+			  loading="lazy"
             />
           </a>
         </div>

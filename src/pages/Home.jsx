@@ -92,6 +92,7 @@ const Home = ({ setBookingModalOpen }) => {
                src="https://www.dentiscenter.ro/wp-content/uploads/2023/05/2021-11-20-1024x576.jpg" 
                alt="Interior clinică modernă" 
                className="object-cover w-full h-full"
+			   loading="lazy"
              />
              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-lg flex items-center space-x-4 border border-zinc-100">
                 <div className="flex -space-x-2">
@@ -115,7 +116,7 @@ const Home = ({ setBookingModalOpen }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div className="max-w-2xl">
-              <h2 className="text-sm font-bold tracking-widest text-zinc-400 uppercase mb-3">Expertiza noastră</h2>
+              <h2 className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-3">Expertiza noastră</h2>
               <h3 className="text-3xl md:text-4xl font-light text-zinc-900 mb-2">Tratamente personalizate</h3>
             </div>
             <div className="hidden md:flex space-x-3">
@@ -168,7 +169,7 @@ const Home = ({ setBookingModalOpen }) => {
       <section className="py-24 bg-white overflow-hidden border-t border-zinc-100">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-sm font-bold tracking-widest text-zinc-400 uppercase mb-3">Rezultate Reale</h2>
+            <h2 className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-3">Rezultate Reale</h2>
             <h3 className="text-3xl md:text-5xl font-light text-zinc-900 mb-6">Arta estetică a zâmbetului</h3>
             <p className="text-zinc-500 text-lg mb-8 leading-relaxed">
               O imagine face cât o mie de cuvinte. Descoperă diferența obținută prin tratamente de estetică dentară care redau strălucirea și naturalețea zâmbetului.
@@ -192,7 +193,7 @@ const Home = ({ setBookingModalOpen }) => {
       <section className="py-24 bg-zinc-50 border-t border-zinc-100">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-sm font-bold tracking-widest text-zinc-400 uppercase mb-3">Povestea Noastră</h2>
+            <h2 className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-3">Povestea Noastră</h2>
             <h3 className="text-3xl md:text-4xl font-light text-zinc-900 mb-6">Pasiune pentru zâmbete sănătoase și estetică perfectă.</h3>
             <p className="text-zinc-500 text-lg mb-6 leading-relaxed">
               Am fondat Dentis Center din dorința de a schimba percepția asupra vizitei la stomatolog. Am creat un spațiu curat, în care frica și anxietatea sunt înlocuite de confort, încredere și igienă impecabilă.
@@ -202,7 +203,12 @@ const Home = ({ setBookingModalOpen }) => {
             </p>
           </div>
           <div className="relative rounded-3xl overflow-hidden shadow-lg aspect-square md:aspect-[4/3] border border-zinc-200 p-2 bg-white">
-            <img src="https://www.dentiscenter.ro/wp-content/uploads/2023/06/2022-03-23.jpg" alt="Echipă clinică" className="w-full h-full object-cover rounded-2xl" />
+            <img 
+			src="https://www.dentiscenter.ro/wp-content/uploads/2023/06/2022-03-23.jpg" 
+			alt="Echipă clinică" 
+			className="w-full h-full object-cover rounded-2xl"
+			loading="lazy"
+			/>
           </div>
         </div>
       </section>
@@ -212,7 +218,7 @@ const Home = ({ setBookingModalOpen }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-sm font-bold tracking-widest text-zinc-400 uppercase mb-3">Echipa Noastră</h2>
+              <h2 className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-3">Echipa Noastră</h2>
               <h3 className="text-3xl md:text-4xl font-light text-zinc-900">Specialiști dedicați</h3>
             </div>
             <div className="hidden md:flex space-x-3">
@@ -237,7 +243,11 @@ const Home = ({ setBookingModalOpen }) => {
             ].map((doc, idx) => (
               <div key={idx} className="snap-start w-[75vw] sm:w-[250px] md:w-[300px] shrink-0 group flex flex-col items-center text-center bg-zinc-50 p-8 rounded-3xl border border-zinc-100 hover:shadow-md transition-all cursor-pointer">
                 <div className="relative overflow-hidden rounded-full mb-6 w-40 h-40 md:w-48 md:h-48 bg-white border-4 border-zinc-200 shadow-sm">
-                  <img src={doc.img} alt={doc.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={doc.img} 
+				  alt={doc.name} 
+				  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+				  loading="lazy"
+				  />
                 </div>
                 <h4 className="text-xl font-medium text-zinc-900">{doc.name}</h4>
                 <p className="text-zinc-500 font-medium text-sm mt-1">{doc.role}</p>
@@ -252,7 +262,7 @@ const Home = ({ setBookingModalOpen }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-sm font-bold tracking-widest text-zinc-400 uppercase mb-3">Părerea Pacienților</h2>
+              <h2 className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-3">Părerea Pacienților</h2>
               <h3 className="text-3xl md:text-4xl font-light text-zinc-900 mb-6">Ce spun pacienții noștri</h3>
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex text-[#a8e4a0]">
@@ -337,15 +347,15 @@ const BeforeAfterSlider = ({ baseImage }) => {
   
   return (
     <div className="relative w-full h-full select-none" onDragStart={(e) => e.preventDefault()}>
-      <img src={baseImage} alt="After" className="absolute top-0 left-0 w-full h-full object-cover filter brightness-110 saturate-[0.9]" />
+      <img src={baseImage} alt="After" className="absolute top-0 left-0 w-full h-full object-cover filter brightness-110 saturate-[0.9]" loading="lazy"/>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden" style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}>
-        <img src={baseImage} alt="Before" className="absolute top-0 left-0 w-full h-full object-cover filter sepia-[.35] hue-rotate-[-15deg] saturate-[1.2] brightness-95" />
+        <img src={baseImage} alt="Before" className="absolute top-0 left-0 w-full h-full object-cover filter sepia-[.35] hue-rotate-[-15deg] saturate-[1.2] brightness-95" loading="lazy"/>
         <div className={`absolute top-4 left-4 bg-zinc-900/60 backdrop-blur text-white px-3 py-1 rounded text-xs font-medium tracking-wider uppercase transition-opacity duration-200 ${sliderPosition < 15 ? 'opacity-0' : 'opacity-100'}`}>
           Înainte
         </div>
       </div>
       <div className={`absolute top-4 right-4 bg-[#a8e4a0]/90 backdrop-blur text-zinc-900 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase z-10 transition-opacity duration-200 ${sliderPosition > 85 ? 'opacity-0' : 'opacity-100'}`}>
-        După (Albire/Fațete)
+        După (Igienizare)
       </div>
       <div className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize flex items-center justify-center z-20 shadow-md" style={{ left: `calc(${sliderPosition}% - 2px)` }}>
         <div className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center border-2 border-zinc-100 text-zinc-600">
@@ -355,7 +365,13 @@ const BeforeAfterSlider = ({ baseImage }) => {
            </div>
         </div>
       </div>
-      <input type="range" min="0" max="100" value={sliderPosition} onChange={(e) => setSliderPosition(e.target.value)} className="absolute top-0 left-0 w-full h-full opacity-0 cursor-ew-resize z-30" />
+      <input 
+	  aria-label="Trageți pentru a compara imaginea înainte și după tratament"
+	  type="range" 
+	  min="0" 
+	  max="100" 
+	  value={sliderPosition} onChange={(e) => setSliderPosition(e.target.value)} 
+	  className="absolute top-0 left-0 w-full h-full opacity-0 cursor-ew-resize z-30" />
     </div>
   );
 };
