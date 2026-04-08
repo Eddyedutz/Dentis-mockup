@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import { 
   Phone, Clock, ChevronRight, ChevronLeft, Star, 
-  Syringe, Sparkles, Smile, Baby, CheckCircle2, ArrowRight, Zap, Activity
+  Syringe, Sparkles, Smile, Baby, CheckCircle2, ArrowRight, Zap, Activity, FlipVertical2 
 } from 'lucide-react';
 
 const Home = ({ setBookingModalOpen }) => {
@@ -130,23 +133,32 @@ const Home = ({ setBookingModalOpen }) => {
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
           >
             {[
-              { icon: Syringe, title: 'Implantologie', desc: 'Înlocuirea dinților lipsă folosind tehnici minim invazive și materiale premium.' },
-              { icon: Sparkles, title: 'Estetică Dentară', desc: 'Fațete dentare, albire profesională și designul zâmbetului adaptat ție.' },
-              { icon: Zap, title: 'Terapie Laser', desc: 'Tratamente precise, nedureroase și cu recuperare rapidă.' },
-              { icon: Activity, title: 'Chirurgie Orală', desc: 'Extracții de molari de minte, rezecții apicale și proceduri chirurgicale.' },
-              { icon: Smile, title: 'Ortodonție', desc: 'Aparate dentare invizibile (Invisalign) și clasice pentru aliniere.' },
-              { icon: Baby, title: 'Pedodonție', desc: 'Tratamente fără durere într-un mediu prietenos pentru cei mici.' }
+              // Am adăugat "path" pentru a ști spre ce pagină să trimită fiecare card
+              { icon: Syringe, title: 'Implantologie', path: 'implantologie-dentara', desc: 'Înlocuirea dinților lipsă folosind tehnici minim invazive și materiale premium.' },
+              { icon: Sparkles, title: 'Estetică Dentară', path: 'albire-dentara', desc: 'Fațete dentare, albire profesională și designul zâmbetului adaptat ție.' },
+              { icon: Zap, title: 'Terapie Laser', path: 'terapia-laser', desc: 'Tratamente precise, nedureroase și cu recuperare rapidă.' },
+              { icon: Activity, title: 'Chirurgie Orală', path: 'chirurgie-dentara', desc: 'Extracții de molari de minte, rezecții apicale și proceduri chirurgicale.' },
+              { icon: FlipVertical2 , title: 'Ortodonție', path: 'ortodontie', desc: 'Aparate dentare invizibile (Invisalign) și clasice pentru aliniere.' },
+              { icon: Baby, title: 'Pedodonție', path: 'pedodontie', desc: 'Tratamente fără durere într-un mediu prietenos pentru cei mici.' }
             ].map((service, idx) => (
-              <div key={idx} className="snap-start w-[75vw] sm:w-[280px] lg:w-[320px] shrink-0 bg-white p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-md transition-all group cursor-pointer border border-zinc-100 flex flex-col h-full">
+              
+              // Am schimbat <div> în <Link> și i-am dat adresa corectă
+              <Link 
+                key={idx} 
+                to={`/tratamente/${service.path}`}
+                className="snap-start w-[75vw] sm:w-[280px] lg:w-[320px] shrink-0 bg-white p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-[#a8e4a0] transition-all group cursor-pointer border border-zinc-100 flex flex-col h-full block"
+              >
                 <div className="w-14 h-14 bg-zinc-50 rounded-2xl flex items-center justify-center text-zinc-800 mb-6 group-hover:bg-[#a8e4a0] transition-colors border border-zinc-100 group-hover:border-transparent">
                   <service.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h4 className="text-xl font-medium text-zinc-900 mb-3">{service.title}</h4>
                 <p className="text-zinc-500 text-sm leading-relaxed mb-6 flex-grow">{service.desc}</p>
-                <div className="flex items-center text-zinc-900 font-medium text-sm group-hover:translate-x-2 transition-transform mt-auto">
-                  Află mai multe <ChevronRight size={16} className="ml-1 text-[#a8e4a0]" />
+                <div className="flex items-center text-zinc-900 font-medium text-sm group-hover:text-[#84c97c] mt-auto">
+                  <span>Află mai multe</span> 
+                  <ChevronRight size={16} className="ml-1 group-hover:translate-x-2 transition-transform" />
                 </div>
-              </div>
+              </Link>
+
             ))}
           </div>
         </div>

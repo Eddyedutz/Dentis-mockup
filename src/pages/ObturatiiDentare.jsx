@@ -40,7 +40,7 @@ const ObturatiiDentare = ({ setBookingModalOpen }) => {
           </div>
           <div className="relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border border-zinc-100 hidden lg:block">
             <img 
-              src="https://www.dentiscenter.ro/wp-content/uploads/2023/06/02@fallback.jpg" 
+              src="https://www.dentiscenter.ro/wp-content/uploads/2023/10/plomba-dentara.png?auto=format&fit=crop&q=80&w=800" 
               alt="Tratament stomatologic carii" 
               className="w-full h-full object-cover"
             />

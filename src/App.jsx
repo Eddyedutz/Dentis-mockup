@@ -13,6 +13,15 @@ import Tratamente from './pages/Tratamente';
 import ObturatiiDentare from './pages/ObturatiiDentare';
 import ChirurgieDentara from './pages/ChirurgieDentara';
 import ImplantologieDentara from './pages/ImplantologieDentara';
+import Ortodontie from './pages/Ortodontie';
+import ProteticaDentara from './pages/ProteticaDentara';
+import TerapieLaser from './pages/TerapieLaser';
+import Endodontie from './pages/Endodontie';
+import Parodontologie from './pages/Parodontologie';
+import Pedodontie from './pages/Pedodontie';
+import Urgente from './pages/Urgente';
+import AlbireDentara from './pages/AlbireDentara';
+import Igienizare from './pages/Igienizare';
 
 import PaginaLegala from './pages/PaginaLegala';
 
@@ -61,13 +70,24 @@ const App = () => {
 				<main className="flex-grow pt-35 md:pt-54">
 				  <Routes>
 					<Route path="/" element={<Home setBookingModalOpen={setBookingModalOpen} />} />
+					
 					<Route path="/tratamente" element={<Tratamente setBookingModalOpen={setBookingModalOpen} />} />
 					<Route path="/tratamente/obturatii-dentare" element={<ObturatiiDentare setBookingModalOpen={setBookingModalOpen} />} />
 					<Route path="/tratamente/chirurgie-dentara" element={<ChirurgieDentara setBookingModalOpen={setBookingModalOpen} />} />
 					<Route path="/tratamente/implantologie-dentara" element={<ImplantologieDentara setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/ortodontie" element={<Ortodontie setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/protetica-dentara" element={<ProteticaDentara setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/terapia-laser" element={<TerapieLaser setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/endodontie-microscopica" element={<Endodontie setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/parodontologie" element={<Parodontologie setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/pedodontie" element={<Pedodontie setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/urgente" element={<Urgente setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/albire-dentara" element={<AlbireDentara setBookingModalOpen={setBookingModalOpen} />} />
+					<Route path="/tratamente/igienizare" element={<Igienizare setBookingModalOpen={setBookingModalOpen} />} />
+					
 					<Route path="/tarife" element={<Tarife setBookingModalOpen={setBookingModalOpen} />} />
 					<Route path="/contact" element={<ContactPage />} />
-					
+
 			{/* --- RUTE PAGINI LEGALE --- */}
 					<Route path="/termeni" element={
 					  <PaginaLegala 

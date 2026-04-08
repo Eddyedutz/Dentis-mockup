@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, Shield, Activity, Syringe, Smile, Zap, 
-  Search, Baby, AlertCircle, Sparkles, Droplet, Plus 
+  Search, Baby, AlertCircle, Sparkles, Droplet, Plus, FlipVertical2   
 } from 'lucide-react';
 
 const Tratamente = ({ setBookingModalOpen }) => {
@@ -23,7 +23,8 @@ const Tratamente = ({ setBookingModalOpen }) => {
     { id: 'pedodontie', nume: 'Pedodonție', icon: Baby, desc: 'Stomatologie dedicată copiilor, cu abordare blândă și tratamente fără stres pentru cei mici.' },
     { id: 'urgente', nume: 'Dureri / Urgențe', icon: AlertCircle, desc: 'Preluare prioritară pentru calmarea durerilor, infecții sau traumatisme dentare neprevăzute.' },
     { id: 'albire-dentara', nume: 'Albire dentară', icon: Sparkles, desc: 'Redă strălucirea naturală a zâmbetului tău rapid și sigur, cu tehnologie profesională.' },
-    { id: 'igienizare', nume: 'Igienizare și Profilaxie', icon: Droplet, desc: 'Detartraj, periaj profesional și AirFlow pentru a menține sănătatea orală pe termen lung.' }
+    { id: 'igienizare', nume: 'Igienizare și Profilaxie', icon: Droplet, desc: 'Detartraj, periaj profesional și AirFlow pentru a menține sănătatea orală pe termen lung.' },
+	{ id: 'ortodontie', nume: 'Ortodonție', icon: FlipVertical2 , desc: 'Aparate dentare invizibile (Invisalign) și clasice pentru un zâmbet perfect aliniat.' }
   ];
 
   return (
